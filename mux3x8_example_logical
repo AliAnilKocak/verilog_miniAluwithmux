@@ -1,4 +1,4 @@
-module mux_3x8(ina,inb,out,sel);
+module _multiplexer(ina,inb,out,sel);
  
 input [4:0]ina;
 input [4:0]inb;
@@ -34,7 +34,7 @@ end
 endmodule
 
 
-module mux_3x8_test;
+module _multiplexer_test;
  
 wire [4:0]out;
  
@@ -42,10 +42,10 @@ reg [2:0]sel;
 reg [4:0]ina;
 reg [4:0]inb;
  
-mux_3x8 mux( .out(out), .ina(ina),.inb(inb), .sel(sel) );
+_multiplexer mux( .out(out), .ina(ina),.inb(inb), .sel(sel) );
  
 initial begin
-$monitor(sel,ina,inb,out);
+$monitor("Secim ucu:",sel," a:",ina," b:",inb," out:",out);
  
 sel=3'b000;
 ina=8'b10110;
