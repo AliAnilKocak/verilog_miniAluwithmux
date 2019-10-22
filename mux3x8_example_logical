@@ -31,4 +31,28 @@ if (sel==7)
 out = (inb << 1)+inb[4]; 
 end
  
-endmodule  
+endmodule
+
+
+module mux_3x8_test;
+ 
+wire [4:0]out;
+ 
+reg [2:0]sel;
+reg [4:0]ina;
+reg [4:0]inb;
+ 
+mux_3x8 mux( .out(out), .ina(ina),.inb(inb), .sel(sel) );
+ 
+initial begin
+$monitor(sel,ina,inb,out);
+ 
+sel=3'b000;
+ina=8'b10110;
+inb=8'b01011;
+ 
+end
+ 
+always #20 sel=sel+3'b001;
+ 
+endmodule
