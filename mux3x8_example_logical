@@ -1,0 +1,34 @@
+module mux_3x8(ina,inb,out,sel);
+ 
+input [4:0]ina;
+input [4:0]inb;
+input [2:0]sel;
+output [4:0]out;
+ 
+output reg [4:0] out; 
+
+wire [2:0]sel;
+wire [4:0]ina;
+wire [4:0]inb;
+ 
+always @(sel or ina or inb)
+begin
+if (sel==0)
+out = ina+inb; 
+if (sel==1)
+out = ina-inb; 
+if (sel==2)
+out = ~ina + 1; 
+if (sel==3)
+out = ~inb + 1; 
+if (sel==4)
+out = ina & inb; 
+if (sel==5)
+out = ina | inb; 
+if (sel==6)
+out = ina ^ inb; 
+if (sel==7)
+out = (inb << 1)+inb[4]; 
+end
+ 
+endmodule  
